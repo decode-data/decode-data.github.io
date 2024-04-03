@@ -9,13 +9,13 @@ theme:
     - scheme: default
       toggle:
         icon: material/weather-sunny 
-        name: Dark Mode
+        name: Dark mode
       primary: white
       accent:  blue grey 
     - scheme: slate 
       toggle:
         icon: material/weather-night 
-        name: Light Mode    
+        name: Light mode    
       primary: black
       accent: cyan
   icon:

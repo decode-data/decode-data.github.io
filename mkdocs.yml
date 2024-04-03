@@ -1,0 +1,24 @@
+site_name: DECODE DATA
+site_url: https://decodedata.io/
+
+theme:
+  name: material
+  font:
+    text: Monserrat
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny 
+        name: Switch to dark mode
+      primary: white
+      accent:  blue grey 
+    - scheme: slate 
+      toggle:
+        icon: material/weather-night 
+        name: Switch to light mode    
+      primary: black
+      accent: cyan
+  icon:
+    repo: fontawesome/brands/github
+
+copyright: Copyright &copy; 2024 DECODE DATA LTD (15503524), UK

@@ -4,7 +4,7 @@ site_url: https://decodedata.io/
 theme:
   name: material
   font:
-    text: Monserrat
+    text: Inter
   palette:
     - scheme: default
       toggle:

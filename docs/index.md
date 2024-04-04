@@ -11,7 +11,7 @@ Decoders restructure and augment inbound data to optimise the structure for quer
     source_data["Source Data"] --> inbound_data
     ```
 
-They efficiently and reponsively curate downstream data assets and are configurable upon deployment, with pre-configured installation functions for connection to specific business intelligence tools. Output data assets can also be exported to a variety of cloud storage providers in any output file/compression format permitted by BigQuery.
+They efficiently and reponsively curate downstream data assets and are configurable upon deployment, with pre-configured installation functions for connection to specific business intelligence tools. Output data assets can also be exported on an automated basis to a variety of cloud storage providers in any output file/compression format permitted by BigQuery.
 
 They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing mainenance or monitoring.
 

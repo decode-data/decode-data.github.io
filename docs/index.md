@@ -13,7 +13,7 @@ Decoders restructure and augment inbound data to optimise the structure for quer
 
 They efficiently and reponsively curate downstream data assets and are configurable upon deployment, with pre-configured installation functions for connection to specific business intelligence tools. Output data assets can also be exported on an automated basis to a variety of cloud storage providers in any output file/compression format permitted by BigQuery.
 
-They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing mainenance or monitoring.
+They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing maintenance or monitoring.
 
 ## Why are they necessary?
 Inbound data structures are typically designed for optimal storage and schema stability, not for simplicity of modelling, query or analytics. Specifically, nested data structures pose challenges as the structure of the nested data needs to be known ahead of time in order to extract meaningful data. This also applies to JSON data.

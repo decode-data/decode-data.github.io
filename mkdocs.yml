@@ -21,4 +21,11 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
 copyright: Copyright &copy; 2024 DECODE DATA LTD (15503524), UK

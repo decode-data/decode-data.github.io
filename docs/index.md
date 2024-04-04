@@ -1,36 +1,42 @@
 # Decoders
-Decoders restructure and augment inbound data to optimise for query and analysis.  They are installed between Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities. 
+## What is a Decoder?
+Decoders restructure and augment inbound data to optimise for query and analysis.  They are installed between standard Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities.
 
-## What?
-Decoders:
+```mermaid
+flowchart LR
+inbound_data["Inbound<br>Data Transfer"] --> decoder["Decoder"] --> outbound_data["Outbound<br>Data Assets"]
+outbound_data --> downstream_activities_gc["Downstream<br>Data Activities"]
+source_data["Source Data"] --> inbound_data
+```
 
-- Restructure inbound data to optimise for query and analysis
-- Optionally augment data from external sources
-- Efficiently and reponsively curate downstream data tables
+They efficiently and reponsively curate downstream data assets and are configurable upon deployment, with pre-configured installation functions for connection to specific business intelligence tools. Output data assets can also be exported to a variety of cloud storage providers in any output file/compression format permitted by BigQuery.
 
-They are configurable upon deployment, with pre-configured installation functions for specific business intelligence tools (e.g. Looker, Looker Studio, Tableau, Power BI, Evidence).  They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing mainenance or monitoring.
+They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing mainenance or monitoring.
 
-## Why?
+## Why are they necessary?
+Inbound data structures are typically designed for optimal storage and schema stability, not for simplicity of modelling, query or analytics. Specifically, nested data structures pose challenges as the structure of the nested data needs to be known ahead of time in order to extract meaningful data. This also applies to JSON data.
 
-- Inbound data not optimised for modelling, query or analytics
-- Optimised for 
-    - schema stability w/ extensibility
-    - storage
-    - table singularity
-- if you find yourself doing anything difficult and annoying over and over again 
+Historically this has meant that transforming this data required painful hand-crafting of queries with a verbose, unintuitive and uncommon query syntax, slowing down subsequent data-related activities.
 
-## How?
+Google-managed inbound data transfers also do not arrive at a consistent time every day, which can be challenging to control for efficiently and reliably.
 
-- native BigQuery/GCP tools
-- SQL-based data profiling
-- nested-content-derived schema generation
-- efficient automation 
-- extensibility
-- built on the foundations of the bqtools functional library for BigQuery
+## How do they work?
+Decoder installation starts with a profiling stage, to understand the structure, contents and data types of the inbound data, especially the complex (i.e. nested) columns. Based on this profile, decoders deploy a bespoke set of resources which simplify the inbound data structure, augment the inbound data and automate the curation of downstream data assets (typically date-partitioned tables).
 
-## Where?
+These data assets can then be:
 
-- installed in the inbound BigQuery dataset or optionally an alternative.
+- queried directly;
+- connected directly to business intelligence tools;
+- used as an input to simplified transformation models; and 
+- extended with SQL to customise subsequent data transformation.
 
+Decoders are built using a hierarchy of functions and use native (but extended) BigQuery functionality, so do not require external API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions on the specific installation function.
+
+## Where are they installed?
+Decoders are installed in a configurable dataset (within the same region as the inbound data), but typically the same dataset as the inbound data. 
+
+A simple `RUN_FLOW` function is also deployed, which calls an external function to check inbound and outbound metadata, identifying new data partitions and executing transformation logic incrementally on newly-arrived data.  This is triggered on a regular schedule using a simple BigQuery Scheduled Query and can also be called manually to refesh specific partition subsets of the outbound tables.
+
+Automation functions can also only be called by permitted users on whitelisted datasets.
 
 

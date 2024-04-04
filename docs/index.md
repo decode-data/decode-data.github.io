@@ -1,6 +1,6 @@
 # Overview
 ## What is a Decoder?
-Decoders restructure and augment inbound data to optimise for query and analysis.  They are installed between standard Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities.
+Decoders restructure and augment inbound data to optimise the structure for query and analysis.  They are installed between standard Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities.
 
 === "Decoder Logical Flow Configuration"
 

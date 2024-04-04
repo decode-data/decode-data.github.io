@@ -3,6 +3,7 @@ Decoders restructure and augment inbound data to optimise for query and analysis
 
 ## What?
 Decoders:
+
 - Restructure inbound data to optimise for query and analysis
 - Optionally augment data from external sources
 - Efficiently and reponsively curate downstream data tables

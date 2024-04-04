@@ -1,7 +1,5 @@
 # Decoders
-
-Decoders are installed between Google-managed inbound data transfers into BigQuery, and subsequent transformation activities. 
-
+Decoders restructure and augment inbound data to optimise for query and analysis.  They are installed between Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities. 
 
 ## What?
 Decoders:
@@ -9,13 +7,7 @@ Decoders:
 - Optionally augment data from external sources
 - Efficiently and reponsively curate downstream data tables
 
-
-- Utility
-- Pre-modelled data, optimised for modelling, query and analysis.
-- Configurable
-- Zero maintenance
-- Cost optimised
-- Optimised for connection to BI tools
+They are configurable upon deployment, with pre-configured installation functions for specific business intelligence tools (e.g. Looker, Looker Studio, Tableau, Power BI, Evidence).  They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing mainenance or monitoring.
 
 ## Why?
 - Inbound data not optimised for modelling, query or analytics
@@ -31,6 +23,11 @@ Decoders:
 - nested-content-derived schema generation
 - efficient automation 
 - extensibility
-
 - built on the foundations of the bqtools functional library for BigQuery
+
+## Where?
+- installed in the inbound BigQuery dataset or optionally an alternative.
+- 
+
+
 

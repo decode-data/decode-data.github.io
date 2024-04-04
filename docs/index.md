@@ -11,6 +11,7 @@ Decoders:
 They are configurable upon deployment, with pre-configured installation functions for specific business intelligence tools (e.g. Looker, Looker Studio, Tableau, Power BI, Evidence).  They are responsive to newly arriving data in a cost-optimal manner and require minimal ongoing mainenance or monitoring.
 
 ## Why?
+
 - Inbound data not optimised for modelling, query or analytics
 - Optimised for 
     - schema stability w/ extensibility
@@ -19,6 +20,7 @@ They are configurable upon deployment, with pre-configured installation function
 - if you find yourself doing anything difficult and annoying over and over again 
 
 ## How?
+
 - native BigQuery/GCP tools
 - SQL-based data profiling
 - nested-content-derived schema generation
@@ -27,8 +29,8 @@ They are configurable upon deployment, with pre-configured installation function
 - built on the foundations of the bqtools functional library for BigQuery
 
 ## Where?
+
 - installed in the inbound BigQuery dataset or optionally an alternative.
-- 
 
 
 

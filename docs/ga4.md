@@ -1,1 +1,1 @@
-# GA4 BigQuery Decoder
+# Google Analytics 4

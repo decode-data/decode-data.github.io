@@ -1,13 +1,15 @@
-# Decoders
+# Overview
 ## What is a Decoder?
 Decoders restructure and augment inbound data to optimise for query and analysis.  They are installed between standard Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities.
 
-```mermaid
-flowchart LR
-inbound_data["Inbound<br>Data Transfer"] --> decoder["Decoder"] --> outbound_data["Outbound<br>Data Assets"]
-outbound_data --> downstream_activities_gc["Downstream<br>Data Activities"]
-source_data["Source Data"] --> inbound_data
-```
+=== "Decoder Logical Flow Configuration"
+
+    ```mermaid
+    flowchart LR
+    inbound_data["Inbound<br>Data Transfer"] --> decoder["Decoder"] --> outbound_data["Outbound<br>Data Assets"]
+    outbound_data --> downstream_activities_gc["Downstream<br>Data Activities"]
+    source_data["Source Data"] --> inbound_data
+    ```
 
 They efficiently and reponsively curate downstream data assets and are configurable upon deployment, with pre-configured installation functions for connection to specific business intelligence tools. Output data assets can also be exported to a variety of cloud storage providers in any output file/compression format permitted by BigQuery.
 
@@ -18,7 +20,7 @@ Inbound data structures are typically designed for optimal storage and schema st
 
 Historically this has meant that transforming this data required painful hand-crafting of queries with a verbose, unintuitive and uncommon query syntax, slowing down subsequent data-related activities.
 
-Google-managed inbound data transfers also do not arrive at a consistent time every day, which can be challenging to control for efficiently and reliably.
+Many Google-managed inbound data transfers also do not arrive at a consistent time every day, which can be challenging to control for efficiently and reliably.
 
 ## How do they work?
 Decoder installation starts with a profiling stage, to understand the structure, contents and data types of the inbound data, especially the complex (i.e. nested) columns. Based on this profile, decoders deploy a bespoke set of resources which simplify the inbound data structure, augment the inbound data and automate the curation of downstream data assets (typically date-partitioned tables).

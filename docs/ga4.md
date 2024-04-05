@@ -30,10 +30,10 @@ The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (
         CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id);
     ```
 
-=== "Simplified syntax"
+=== "Concise syntax"
 
     ```SQL
-    CALL decodedata.us.install_ga4_decoder('project_id.analytics_##########', 'project_id.analytics_##########');
+    CALL decodedata.us.install_ga4_decoder('project_id.analytics_##########', 'another_project_id.analytics_##########');
     ```
 
 ## Output Resources
@@ -70,7 +70,7 @@ The scheduled query required to execute this is then simply:
 Note that it is good practice to add a unique `scheduled_query_id` query label to the scheduled query.  This will enable job-based cost tracking across your GA4 properties to support robust cost management processes.
 
 ### Compute Estimate
-The compute automation component to run the GA4 Decoder hourly is approximately $0.135 per month. This will not increase over time, regardless of inbound data volumes.
+The compute automation component to run the GA4 Decoder hourly is approximately $0.135 per month. This consumption will not increase over time, regardless of inbound data volumes.
 
 Component | Logic | Value | Unit
 --- | --- | --- | ---

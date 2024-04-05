@@ -9,17 +9,19 @@ theme:
     - scheme: default
       toggle:
         icon: material/weather-sunny 
-        name: Dark mode
+        name: Switch to dark mode
       primary: white
       accent:  blue grey 
     - scheme: slate 
       toggle:
         icon: material/weather-night 
-        name: Light mode    
+        name: Switch to light mode    
       primary: black
       accent: cyan
   icon:
     repo: fontawesome/brands/github
+  logo: assets/logos/Decode Data Logo 180x180.png
+  favicon: assets/logos/Decode Data Logo Transparent 130x130.png
 
 markdown_extensions:
   - pymdownx.superfences:

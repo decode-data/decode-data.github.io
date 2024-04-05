@@ -1,6 +1,6 @@
 # Google Analytics 4
 ## Installation
-The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example, for the `us` multi-region).
+The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example below, for the `us` multi-region).
 
 === "Installation in GA4 dataset"
 

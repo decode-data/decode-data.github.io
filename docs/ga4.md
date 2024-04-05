@@ -30,6 +30,12 @@ The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (
         CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id);
     ```
 
+=== "Simplified syntax"
+
+    ```SQL
+    CALL decodedata.us.install_ga4_decoder('project_id.analytics_##########', 'project_id.analytics_##########');
+    ```
+
 ## Output Resources
 Following default installation, these output resources are built in the `decoder_dataset_id` dataset:
 

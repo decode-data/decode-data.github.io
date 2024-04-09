@@ -10,6 +10,8 @@ The `events` table is a flattened transformation of the raw inbound `events_YYYY
 - **Intelligent data type coalescence** to prevent type-based historic data loss
 - **Session and event ids** to support robust data quality assurance processes
 
+One row represents one single discrete event.
+
 ## Schema
 ### New Columns (Metadata)
 The following metadata columns are added to the output `events` table.

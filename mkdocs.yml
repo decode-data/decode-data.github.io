@@ -22,6 +22,9 @@ theme:
     repo: fontawesome/brands/github
   logo: assets/logos/Decode Data Logo 180x180.png
   favicon: assets/logos/Decode Data Logo Transparent 130x130.png
+  features:
+    - navigation.indexes 
+
 
 markdown_extensions:
   - pymdownx.superfences:
@@ -31,5 +34,12 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+
+
+nav:
+  - Overview: index.md
+  - Google Anaytics 4:
+    - Overview: GA4/index.md
+    - Events: GA4/events.md
 
 copyright: Copyright &copy; 2024 DECODE DATA LTD (15503524), UK

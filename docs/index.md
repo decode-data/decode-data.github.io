@@ -37,7 +37,7 @@ These data assets can then be:
 Decoders are built using a hierarchy of functions and use native (but extended) BigQuery functionality, so do not require external plaforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions on the specific installation function.
 
 ## Where is it installed?
-Decoders are installed in a configurable dataset (within the same region as the inbound data), but typically the same dataset as the inbound data. 
+A decoder is installed in a configurable dataset (within the same region as the inbound data), but typically the same dataset as the inbound data. 
 
 A simple `RUN_FLOW` function is also deployed in the decoder dataset, which calls an external function to check and compare inbound shard and outbound partition metadata. New date partitions are identified, transformation/augmentation logic is applied to the newly-arrived data and the output data tables are updated incrementally.
 

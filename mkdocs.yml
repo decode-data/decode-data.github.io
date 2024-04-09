@@ -35,11 +35,10 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
-
 nav:
   - Overview: index.md
   - Google Anaytics 4:
-    - Overview: GA4/index.md
-    - Events: GA4/events.md
+    - Overview: ga4/index.md
+    - Events: ga4/events.md
 
 copyright: Copyright &copy; 2024 DECODE DATA LTD (15503524), UK

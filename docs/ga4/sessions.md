@@ -30,7 +30,7 @@ The following columns are aggregated in order to make sense at a session-level a
 | event_names | ARRAY<STRING> | `ARRAY_AGG(DISTINCT event_name IGNORE NULLS)` | An array of unique `event_name` values in a session
 
 ### Channel Grouping Column
-The channel_grouping `STRING` column is added, in alignment with the Google [Default channel group](https://support.google.com/analytics/answer/9756891?hl=en&ref=ga4bigquery.com) logic.  This enables the `last_click_non_direct` and `last_click_non_direct` attribution models.
+The `channel_grouping` `STRING` column is added, in alignment with the Google [Default channel group](https://support.google.com/analytics/answer/9756891?hl=en&ref=ga4bigquery.com) logic.  This enables the `last_click_non_direct` and `last_click_non_direct` attribution models.
 
 ### Aggregated Metric Columns
 All columns in the `count` metric `STRUCT` in the `events` table are summed across all events in a session, with the naming convention unchanged (e.g. `SUM(count.page_view) AS page_view`).  Additionally, the following fields are summed across all event metrics:

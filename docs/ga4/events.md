@@ -3,7 +3,7 @@
 The `events` table is a flattened transformation of the raw inbound `events_YYYYMMDD` table, with the following structural and semantic changes:
 
 - **Simplified flat output structure** for optimal query syntax
-- **Simple event count metrics** for simple comparison and calculations
+- **Simple event count metrics** for comparison and calculations
 - **Standard and custom event parameters** in property-specific flat schema
 - **Custom user properties** in property-specific flat schema
 - **Geo-based local timestamps** for time-of-day analyses

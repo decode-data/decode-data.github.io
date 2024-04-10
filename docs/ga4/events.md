@@ -35,16 +35,16 @@ The following columns are passed through directly from the raw `events_YYYYMMDD`
 | event_server_timestamp_offset | INTEGER |
 | user_id | STRING |
 | user_pseudo_id | STRING |
-| privacy_info | RECORD |
-| user_ltv | RECORD |
-| device | RECORD |
-| geo | RECORD |
-| app_info | RECORD |
-| traffic_source | RECORD |
+| privacy_info | STRUCT |
+| user_ltv | STRUCT |
+| device | STRUCT |
+| geo | STRUCT |
+| app_info | STRUCT |
+| traffic_source | STRUCT |
 | stream_id | STRING |
 | platform | STRING |
-| event_dimensions | RECORD |
-| collected_traffic_source | RECORD |
+| event_dimensions | STRUCT |
+| collected_traffic_source | STRUCT |
 | is_active_user | BOOLEAN |
 | privacy_info | STRING |
 | user_ltv | FLOAT |
@@ -58,19 +58,19 @@ The following columns are passed through directly from the raw `events_YYYYMMDD`
 ### Data Type Changes
 The following columns are included in the `events` output table, with appropriate data type changes.
 
-| COLUMN NAME | FROM DATA TYPE | TO DATA TYPE |
-| --- | --- | --- |
-| event_date | STRING | DATE |
-| event_timestamp | INTEGER | TIMESTAMP |
-| event_previous_timestamp | INTEGER | TIMESTAMP |
-| user_first_touch_timestamp | INTEGER | TIMESTAMP |
+| COLUMN NAME | FROM DATA TYPE | TO DATA TYPE | DESCRIPTION
+| --- | --- | --- | --- |
+| event_date | STRING | DATE | Inbound shard date 
+| event_timestamp | INTEGER | TIMESTAMP | UTC timestamp of event occurrence
+| event_previous_timestamp | INTEGER | TIMESTAMP | UTC timestamp of previous event occurrence
+| user_first_touch_timestamp | INTEGER | TIMESTAMP | UTC timestamp of user first touch
 
 ### New Columns (Augmentation)
 The following augmentation columns are added to the output `events` table:
 
 | COLUMN NAME | DATA TYPE | DESCRIPTION |
 | --- | --- | --- |
-| local | RECORD | NEW local timezone and geolocation STRUCT |
+| local | STRUCT | NEW local timezone and geolocation STRUCT |
 | local.timezone_id | STRING | NEW local timezone STRING column |
 | local.timezone_name | STRING | NEW local timezone STRING column |
 | local.country_code | STRING | NEW local timezone STRING column |
@@ -94,4 +94,10 @@ The following flat `STRUCT` columns are added, replacing the nested source colum
 | event_params | ARRAY | Transformed to `parameter` STRUCT
 | user_properties | ARRAY | Transformed to `property` STRUCT
 
+### New Metric Columns 
+The following columns are added to the `count` metric STRUCT to enable simple subsequent computations:
 
+| COLUMN NAME | DATA TYPE | DEFINITION | DESCRIPTION
+| --- | --- | ---
+| count.total_events | INTEGER | An integer flag to enable `total_events` to be used as an output metric
+| count.total_conversions | INTEGER | An integer flag to enable `total_conversions` to be used as an output metric, as defined in the deployment configuration.

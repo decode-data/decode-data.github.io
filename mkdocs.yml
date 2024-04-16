@@ -42,10 +42,12 @@ extra:
 
 nav:
   - Overview: index.md
-  - Google Anaytics 4:
-    - Overview: ga4/index.md
-    - Events: ga4/events.md
-    - Sessions: ga4/sessions.md
-
+  - Decoders:
+    - Google Anaytics 4:
+      - Overview: ga4/index.md
+      - Events: ga4/events.md
+      - Sessions: ga4/sessions.md
+  - BigQuery Reference:
+    - Functions: bigquery/functions.md
 
 copyright: Copyright &copy; 2024 DECODE DATA LTD (15503524), UK

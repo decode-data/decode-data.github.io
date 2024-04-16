@@ -97,7 +97,7 @@ The following flat `STRUCT` columns are added, replacing the nested source colum
 ### New Metric Columns 
 The following columns are added to the `count` metric STRUCT to enable simple subsequent computations:
 
-| COLUMN NAME | DATA TYPE | DEFINITION | DESCRIPTION
-| --- | --- | ---
+| COLUMN NAME | DATA TYPE | DESCRIPTION
+| --- | --- | --- 
 | count.total_events | INTEGER | An integer flag to enable `total_events` to be used as an output metric
 | count.total_conversions | INTEGER | An integer flag to enable `total_conversions` to be used as an output metric, as defined in the deployment configuration.

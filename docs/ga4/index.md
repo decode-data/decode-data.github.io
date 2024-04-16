@@ -70,7 +70,7 @@ The scheduled query required to execute this is then simply:
 Note that it is good practice to add a unique `scheduled_query_id` query label to the scheduled query.  This will enable job-based cost tracking across your GA4 properties to support robust cost management processes.
 
 ### Compute Estimate
-The compute automation component to run the GA4 Decoder hourly is approximately $0.135 per month. This consumption will not increase over time, regardless of inbound data volumes.
+The compute automation component to run the GA4 Decoder hourly is approximately $0.135 per property per month. This consumption will not increase over time, regardless of inbound data volumes.
 
 Component | Logic | Value | Unit
 --- | --- | --- | ---

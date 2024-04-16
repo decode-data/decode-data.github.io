@@ -24,7 +24,7 @@ theme:
   favicon: assets/logos/Decode Data Logo Transparent 130x130.png
   features:
     - navigation.indexes 
-
+    - content.code.copy    
 
 markdown_extensions:
   - pymdownx.superfences:

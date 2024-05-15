@@ -5,8 +5,7 @@ The GA4 Decoder enables automatic pre-modelling of the GA4 BigQuery `events_YYYY
 It can be installed by permitted users on registered datasets by executing a single BigQuery function, without dependencies on any external platforms or API calls.
 
 ## Access
-The Google Analytics 4 Decoder is currently open to private alpha registration. 
-Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
+The Google Analytics 4 Decoder is currently open to private alpha registration. Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
 
 ## Installation
 The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example below, for the `us` multi-region).

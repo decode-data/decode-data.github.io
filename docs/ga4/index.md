@@ -6,7 +6,7 @@ It can be installed by permitted users on registered datasets by executing a sin
 
 ## Access
 The <b>Google Analytics 4 Decoder</b> is currently open to private alpha registration. 
-Register for access <a href="https://forms.gle/Y7bs7eQn1kZ2s4j29" target="_blank">here</a>.
+Register for access <a href="https://forms.gle/BSCNoB8QPgGsEHbc8" target="_blank">here</a>.
 
 ## Installation
 The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example below, for the `us` multi-region).

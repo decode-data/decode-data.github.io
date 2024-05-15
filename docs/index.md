@@ -13,7 +13,7 @@ It is installed between standard Google-managed inbound BigQuery data transfers 
      style decoder fill:#ffffff,stroke:#333,stroke-width:2px
     ```
 
-It efficiently and reponsively curates downstream data assets and is configurable upon deployment, with pre-configured installation functions for connection to specific business intelligence tools, cross-cloud storage buckets or even [Google BigTable](https://cloud.google.com/bigtable?hl=en).
+It efficiently and reponsively curates downstream data assets and is configurable upon deployment, with pre-configured installation functions for connection to Looker, Looker Studio, other business intelligence tools or cross-cloud storage buckets.
 
 It is responsive to newly arriving data in a cost-optimal manner and requires minimal ongoing maintenance or monitoring.
 
@@ -46,11 +46,11 @@ Once a decoder is installed, the output data assets can then be:
 - used as an input to simplified transformation models; and 
 - extended with SQL to customise subsequent data transformation.
 
-Decoders are built using a hierarchy of functions and use native (but extended) BigQuery functionality, so do not require external platforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions on the specific installation function.
+Decoders are built using native (but extended) BigQuery functionality, so do not require external platforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions to call the specific installation function.
 
-A simple `RUN_FLOW` automation function is deployed in the decoder dataset, which calls an external function to check and compare inbound shard and outbound partition metadata. New date partitions are identified, transformation/augmentation logic is applied to the newly-arrived data and the output data tables are updated incrementally.
+A simple automation function is deployed in the decoder dataset, which calls an external function to check and compare inbound shard and outbound partition metadata. New date partitions are identified, transformation/augmentation logic is applied to the newly-arrived data and the output data tables are updated incrementally.
 
-This is triggered on a regular schedule using a simple BigQuery scheduled query, and can also be called manually to refesh specific partition subsets of the outbound tables.
+This is triggered on a regular schedule using a BigQuery scheduled query, and can also be called manually to refesh specific partition subsets of the outbound tables.
 
 Access to automation functions is granted to permitted users on whitelisted datasets.
 

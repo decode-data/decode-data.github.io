@@ -4,6 +4,10 @@ The GA4 Decoder enables automatic pre-modelling of the GA4 BigQuery `events_YYYY
 
 It can be installed by permitted users on registered datasets by executing a single BigQuery function, without dependencies on any external platforms or API calls.
 
+## Access
+The <b>Google Analytics 4 Decoder</b> is currently open to private alpha registration. 
+Register for access <a href="https://forms.gle/Y7bs7eQn1kZ2s4j29" target="_blank">here</a>.
+
 ## Installation
 The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example below, for the `us` multi-region).
 
@@ -49,10 +53,10 @@ Resource Name | Resource Type | Partitioning Column | Row Granularity
 **`events`** | `TABLE` | `event_date` | One row per event
 **`sessions`** | `TABLE` | `event_date` | One row per session
 
-These will be built from the latest data upon installation, but you will need to execute the `decoder_dataset_id.RUN_FLOW(start_date, end_date)` function to refresh output table with the transformed latest arriving data.
+These will be built from the latest data upon installation, but you will need to execute the `decoder_dataset_id.RUN_DECODER(start_date, end_date)` function to refresh output table with the transformed latest arriving data.
 
 ## Automation
-In order to efficiently automate the decoder, a simple BigQuery scheduled query can be used to call the `RUN_FLOW` function periodically (typically every hour).  Since it is querying metadata to identify newly arriving date partitions, the underlying data is never queried, meaning that the compute required for the automation is predicatable and low (see the Compute Estimate section).
+In order to efficiently automate the decoder, a simple BigQuery scheduled query can be used to call the `RUN_DECODER` function periodically (typically every hour).  Since it is querying metadata to identify newly arriving date partitions, the underlying data is never queried, meaning that the compute required for the automation is predicatable and low (see the Compute Estimate section).
 
 Since Google indicates that inbound data can change up to 72 hours after arrival, we typically refresh the past 4 days of data on each identified arrival of new data.
 
@@ -61,7 +65,7 @@ The scheduled query required to execute this is then simply:
 === "Overwrite past 4 days of data"
 
     ```SQL
-    CALL `decoder_dataset_id.us.RUN_FLOW`(CURRENT_DATE - 4, NULL);
+    CALL `decoder_dataset_id.us.RUN_DECODER`(CURRENT_DATE - 4, NULL);
     ```
 
 === "Add query label"

@@ -1,4 +1,7 @@
 # Overview
+## What do we do?
+We build Google BigQuery data automation capabilities, using native BigQuery functionality. In order to transform inbound data to support subsequent use-cases, we build and deploy source-specific Decoders for our clients and license them to 3rd parties.
+
 ## What is a Decoder?
 A Decoder restructures and augments inbound data to optimise the structure and contents for query and analysis.  
 

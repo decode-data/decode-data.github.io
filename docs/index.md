@@ -46,7 +46,7 @@ Once a decoder is installed, the output data assets can then be:
 - used as an input to simplified transformation models; and 
 - extended with SQL to customise subsequent data transformation.
 
-Decoders are built using a hierarchy of functions and use native (but extended) BigQuery functionality, so do not require external plaforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions on the specific installation function.
+Decoders are built using a hierarchy of functions and use native (but extended) BigQuery functionality, so do not require external platforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions on the specific installation function.
 
 A simple `RUN_FLOW` automation function is deployed in the decoder dataset, which calls an external function to check and compare inbound shard and outbound partition metadata. New date partitions are identified, transformation/augmentation logic is applied to the newly-arrived data and the output data tables are updated incrementally.
 

@@ -1,4 +1,9 @@
 # Google Analytics 4
+## Objective
+The GA4 Decoder enables automatic pre-modelling of the GA4 BigQuery `events_YYYYMMDD` export, providing flattened, date-partitioned `events` and `sessions` tables containing all standard and observed `event_params` and `user_properties`.  It also provides mechanisms to detect new `event_params` and `user_properties` values and to incrementally update data based on inbound data detection.
+
+It can be installed by permitted users on registered datasets by executing a single BigQuery function, without dependencies on any external platforms or API calls.
+
 ## Installation
 The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example below, for the `us` multi-region).
 

@@ -1,6 +1,6 @@
 # Events
 ## Overview
-The `sessions` table is a flattened date-partitioned session-level aggregation of the `events` table. The attibution model defaults to `first_click`, but can also be configured as `last_click`, `first_click_non_direct` or `last_click_non_direct`.
+The `sessions` table is a flattened date-partitioned session-level aggregation of the `events` table. The attibution model defaults to `last_click`, but can also be configured as `first_click`, `first_click_non_direct` or `last_click_non_direct`.
 
 One row represents one single discrete session.
 

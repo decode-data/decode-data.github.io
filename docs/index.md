@@ -1,11 +1,9 @@
 # Overview
 ## What do we do?
-We build Google BigQuery data automation capabilities, using native BigQuery functionality and adjacent Google Cloud products. 
-
-In order to transform inbound data to support subsequent analytics, automation and AI use-cases, we build and deploy source-specific Decoders for our clients, and license them to 3rd parties.
+We build Google BigQuery data automation capabilities, using native BigQuery functionality and adjacent Google Cloud products. In order to transform inbound data to support subsequent analytics, automation and AI use-cases, we build and deploy source-specific Decoders for our clients, and license them to 3rd parties.
 
 ## What is a Decoder?
-A Decoder restructures and augments inbound data to optimise the structure and contents for query and analysis.  
+A Decoder restructures and augments inbound data to optimise the structure and contents for query and analysis. It is essentially an 'upgrade' to a standard inbound data source, removing complexity from downstream operations in order to speed up (and level-up) subsequent data activities.
 
 It is installed between standard Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities.
 
@@ -18,9 +16,9 @@ It is installed between standard Google-managed inbound BigQuery data transfers 
      style decoder fill:#ffffff,stroke:#333,stroke-width:2px
     ```
 
-It efficiently and reponsively curates downstream data assets and is configurable upon deployment, with pre-configured installation functions for connection to Looker, Looker Studio, other business intelligence tools or cross-cloud storage buckets.
+It efficiently and reponsively builds downstream data assets and is optionally configurable upon deployment, with pre-configured installation functions for connection to Looker, Looker Studio, Tableau, Power BI, other business intelligence tools or even cross-cloud storage buckets.
 
-It is responsive to newly arriving data in a cost-optimal manner and requires minimal ongoing maintenance or monitoring.
+By using a metadata-driven approach, it is responsive to newly arriving data in a cost-optimal manner and requires minimal ongoing maintenance or monitoring (athough metadata-based monitoring functions are provided).
 
 ## Why would you need one?
 Inbound data structures are typically designed for optimal storage and schema stability, not for simplicity of modelling, query or analytics. Specifically, nested data structures pose challenges as the structure of the nested data needs to be known ahead of time in order to extract meaningful data. This also applies to JSON data.
@@ -33,15 +31,15 @@ Many Google-managed inbound data transfers also do not arrive at a consistent ti
 Decoders are installed by executing a BigQuery function with installation-specific configuration arguments. Installation involves the following automated stages:
 
 1. Profile data structure, contents and types
-2. Build decoder functions based on configuration and data profile
+2. Build source-specific decoder functions based on configuration and data profile
 3. Build output assets (typically date-partitioned tables)
-4. Deploy automation function
+4. Deploy automation, monitoring and installation functions
 
 === "Decoder Installation"
 
     ```mermaid
     flowchart LR
-     profile_data["Profile<br>Data"] --> build_decoder_functions["Build<br>Decoder<br>Functions"] --> build_output_assets["Build<br>Output<br>Assets"] --> deploy_automation_function["Deploy<br>Automation<br>Function"] 
+     profile_data["Profile<br>Data"] --> build_decoder_functions["Build<br>Decoder<br>Functions"] --> build_output_assets["Build<br>Output<br>Assets"] --> deploy_automation_function["Deploy<br>Management<br>Functions"] 
     ```
 
 Once a decoder is installed, the output data assets can then be:
@@ -61,3 +59,11 @@ Access to automation functions is granted to permitted users on whitelisted data
 
 ## Where is it installed?
 A decoder is installed in a configurable dataset (within the same region as the inbound data), but typically the same dataset as the inbound data. 
+
+Decoders can deployed programmatically across hundreds of data sources in just a few lines of code. No configuration is _required_, but Decoders _can_ be configured in granular ways depending on the use-case and data.
+
+## What Decoders are currently available?
+The [Google Analytics 4 Decoder]('docs/ga4') is currently open to private alpha registration. 
+
+Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
+

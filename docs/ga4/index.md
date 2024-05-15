@@ -5,7 +5,7 @@ The GA4 Decoder enables automatic pre-modelling of the GA4 BigQuery `events_YYYY
 It can be installed by permitted users on registered datasets by executing a single BigQuery function, without dependencies on any external platforms or API calls.
 
 ## Access
-The <b>Google Analytics 4 Decoder</b> is currently open to private alpha registration. 
+The Google Analytics 4 Decoder is currently open to private alpha registration. 
 Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
 
 ## Installation

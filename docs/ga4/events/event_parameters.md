@@ -48,7 +48,6 @@ The following event parameters are included as standard in the GA4 decoder outpu
 | page_title | STRING |
 | percent_scrolled | INT64 |
 | search_term | STRING |
-| search_term | STRING |
 | session_engaged | STRING |
 | source | STRING |
 | term | STRING |
@@ -113,7 +112,6 @@ event_params STRUCT
 ├── page_referrer STRING
 ├── page_title STRING
 ├── percent_scrolled INT64
-├── search_term STRING
 ├── search_term STRING
 ├── session_engaged STRING
 ├── source STRING

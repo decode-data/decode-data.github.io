@@ -53,7 +53,7 @@ nav:
   - Overview: index.md
   - Decoders:
     - Google Analytics 4:
-      - Overview: ga4/index.md
+      - GA4 Overview: ga4/index.md
       - Events: ga4/events.md
       - Sessions: ga4/sessions.md
   - BigQuery Reference:

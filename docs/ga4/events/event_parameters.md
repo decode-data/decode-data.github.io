@@ -63,7 +63,7 @@ The default name for the event parameter output `STRUCT` is `parameter`, but thi
 
 These event parameter values can then be accessed concisely by using dot notation, for example: `parameter.video_title`.
 
-### Observed Data Type Inconsistencies
+### Inconsistent Data Types
 #### `session_engaged`
 The `session_engaged` column values have been observed to be either `STRING` or `INT64` values, which is automatically corrected for in the GA4 decoder. This can be seen in the `GA4_event_params` decoder function, for which the generated code is below.
 
@@ -74,12 +74,14 @@ The `session_engaged` column values have been observed to be either `STRING` or 
 Note that many articles and guides wrongly extract the `session_engaged` value as either an `INT64` or `STRING` column, which we have observed to under-report engaged sessions by 3-12%.
 
 ### Automatic Type Coalescence
-When multiple data types are observed for an event parameter in the source data, if only one of the value sub-columns is used then data will be lost. The GA4 decoder controls for this by combining `COALESCE` and `SAFE_CAST` as above, with the output data type dependent on which combination of non-null values are observed. They will be coalesced to a common [supertype](https://cloud.google.com/bigquery/docs/reference/standard-sql/conversion_rules#supertypes). For example, if `STRING` and `INT64` values are observed, they resulting field will be a `STRING`, and if `INT64` AND `FLOAT64` values are observed, the resulting field will be a `FLOAT64`.
+When multiple data types are observed for an event parameter in the source data, if only one of the value sub-columns is used then data will be lost. 
+
+The GA4 decoder controls for this by combining `COALESCE` and `SAFE_CAST` as above, with the output data type dependent on which combination of non-null values are observed. They will be coalesced to a common [supertype](https://cloud.google.com/bigquery/docs/reference/standard-sql/conversion_rules#supertypes). For example, if `STRING` and `INT64` values are observed, they resulting field will be a `STRING`, and if `INT64` AND `FLOAT64` values are observed, the resulting field will be a `FLOAT64`.
 
 ## Custom Event Parameters
 When additional parameters are detected in the source data, they will also be included in the `parameter` output `STRUCT`. These will be found _after_ the standard alphabetically listed event parameters, so they can be easily identified.  Recommended event parameters are included _if_ they are in the expected or observed custom event parameters.
 
-## STRUCT Schema: `parameter`
+## Output Schema
 The schema of the output `parameter` `STRUCT` is therefore:
 
 ```text

@@ -32,7 +32,7 @@ The following sub-columns are added to the `count` metric STRUCT to enable simpl
 | COLUMN NAME | DATA TYPE | DESCRIPTION
 | --- | --- | --- 
 | count.total_events | INTEGER | An integer flag to enable `total_events` to be used as an output metric
-| count.total_conversions | INTEGER | An integer flag to enable `total_conversions` to be used as an output metric.
+| count.total_conversions | INTEGER | An integer flag to enable `total_conversions` to be used as an output metric
 
 Note that `event_name` values to be classified as conversions are set in the installation configuration, but defaults to `purchase` as per the Google default.  These can be renamed in subsequent transformations or BI tools to retain consistency with whatever confusing Google name changes happen in future. 
 

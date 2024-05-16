@@ -49,13 +49,13 @@ Once a decoder is installed, the output data assets can then be:
 - used as an input to simplified transformation models; and 
 - extended with SQL to customise subsequent data transformation.
 
-Decoders are built using native (but extended) BigQuery functionality, so do not require external platforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions to call the specific installation function.
+Decoders are built using native (but extended) BigQuery functionality, so do not require external platforms or API calls. Decoders can be deployed on whitelisted datasets, by users with the appropriate permissions to call the specific installation functions.
 
-A simple automation function is deployed in the decoder dataset, which calls an external function to check and compare inbound shard and outbound partition metadata. New date partitions are identified, transformation/augmentation logic is applied to the newly-arrived data and the output data tables are updated incrementally.
+A simple automation function is deployed in the decoder dataset, which checks and compares inbound shard and outbound partition metadata. New date partitions are identified, transformation/augmentation logic is applied to the newly-arrived data and the output data tables are updated incrementally.
 
-This is triggered on a regular schedule using a BigQuery scheduled query, and can also be called manually to refesh specific partition subsets of the outbound tables.
+This is triggered on a regular schedule (as short as every 5 minutes, but typically hourly), and can also be called manually to refesh specific partition subsets of the outbound tables. Since this is built on metadata queries (and does not query the underlying data) it is a simple mechanism to execute data transformations upon arrival of both predictably and unpredictably timed inbound data.
 
-Access to automation functions is granted to permitted users on whitelisted datasets.
+Access to installation and automation functions is granted to permitted users on whitelisted datasets.
 
 ## Where is it installed?
 A decoder is installed in a configurable dataset (within the same region as the inbound data), but typically the same dataset as the inbound data. 

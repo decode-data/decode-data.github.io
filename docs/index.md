@@ -2,8 +2,8 @@
 ## What do we do?
 We build Google BigQuery data automation capabilities, using native BigQuery functionality and adjacent Google Cloud products. In order to transform inbound data to support subsequent analytics, automation and AI use-cases, we build and deploy source-specific Decoders for our clients, and license them to 3rd parties.
 
-## What is a Decoder?
-A Decoder restructures and augments inbound data to optimise the structure and contents for query and analysis. It is essentially an 'upgrade' to a standard inbound data source, removing complexity from downstream operations in order to speed up (and level-up) subsequent data activities.
+## What is a decoder?
+A decoder restructures and augments inbound data to optimise the structure and contents for query and analysis. It is essentially an upgrade to a standard inbound data source, removing complexity from downstream operations in order to speed up (and level-up) subsequent data activities.
 
 It is installed between standard Google-managed inbound BigQuery data transfers and subsequent transformation, analysis or automation activities.
 
@@ -60,7 +60,9 @@ Access to automation functions is granted to permitted users on whitelisted data
 ## Where is it installed?
 A decoder is installed in a configurable dataset (within the same region as the inbound data), but typically the same dataset as the inbound data. 
 
-Decoders can deployed programmatically across hundreds of data sources in just a few lines of code. No configuration is _required_, but Decoders _can_ be configured in granular ways depending on the use-case and data.
+Decoders can deployed programmatically across hundreds of data sources in just a few lines of code. No configuration is _required_, but decoders _can_ be configured in granular ways depending on the use-case and data.
 
-## What Decoders are currently available?
-The [Google Analytics 4 Decoder](ga4/index.md) is currently open to private alpha registration.  Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
+## What Decoders are available?
+The [Google Analytics 4 Decoder](ga4/index.md) is currently open to private alpha registration.  Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.  
+
+Additional decoders are also in development and are currently being used on internal and client projects.

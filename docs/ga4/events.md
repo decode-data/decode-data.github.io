@@ -7,7 +7,7 @@ The `events` table is a flattened transformation of the raw inbound `events_YYYY
 - **Standard and custom event parameters** in property-specific flat schema
 - **Custom user properties** in property-specific flat schema
 - **Geo-based local timestamps** for time-of-day analyses
-- **Intelligent data type coalescence** to prevent type-based historic data loss
+- **Observation-based data type coalescence** to prevent type-based historic data loss
 - **Session and event ids** to support robust data quality assurance processes
 
 One row represents one single discrete event.

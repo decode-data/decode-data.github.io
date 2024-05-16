@@ -71,19 +71,19 @@ The following augmentation columns are added to the output `events` table:
 | COLUMN NAME | DATA TYPE | DESCRIPTION |
 | --- | --- | --- |
 | local | STRUCT | NEW local timezone and geolocation STRUCT |
-| local.timezone_id | STRING | NEW local timezone STRING column |
-| local.timezone_name | STRING | NEW local timezone STRING column |
-| local.country_code | STRING | NEW local timezone STRING column |
-| local.timezone_source | STRING | NEW local timezone STRING column |
-| local.latitude | STRING | NEW geolocation STRING column |
-| local.longitude | STRING | NEW geolocation STRING column |
-| local.date | DATE | NEW geo-adjusted DATE column |
-| local.timestamp | DATETIME | NEW geo-adjusted DATETIME column |
-| local.time | TIME | NEW geo-adjusted TIME column |
-| local.hour | INTEGER | NEW geo-adjusted INTEGER column |
-| local.hour_decimal | FLOAT | NEW geo-adjusted FLOAT column |
-| local.previous_timestamp | DATETIME | NEW geo-adjusted DATETIME column |
-| local.first_touch_timestamp | DATETIME | NEW geo-adjusted DATETIME column |
+| local.timezone_id | STRING | NEW timezone id |
+| local.timezone_name | STRING | NEW timezone name |
+| local.country_code | STRING | NEW ISO country code |
+| local.timezone_source | STRING | NEW source of timezone allocation (city/region/country) |
+| local.latitude | STRING | NEW latitude |
+| local.longitude | STRING | NEW longitude |
+| local.date | DATE | NEW geo-adjusted `event_date` |
+| local.timestamp | DATETIME | NEW geo-adjusted `event_timestamp` |
+| local.time | TIME | NEW geo-adjusted time |
+| local.hour | INTEGER | NEW geo-adjusted hour |
+| local.hour_decimal | FLOAT | NEW geo-adjusted decimal hour |
+| local.previous_timestamp | DATETIME | NEW geo-adjusted `previous_timestamp` |
+| local.first_touch_timestamp | DATETIME | NEW geo-adjusted `first_touch_timestamp` |
 
 ### New Columns (Restructuring)
 The following flat `STRUCT` columns are added, replacing the nested source columns which are excluded from the output `events` table. The `event_name` column is still included in the output `events` table, but is supplemented with the `count` metrics `STRUCT`.
@@ -93,11 +93,3 @@ The following flat `STRUCT` columns are added, replacing the nested source colum
 | event_name | STRING | Transformed to `count` metric STRUCT
 | event_params | ARRAY | Transformed to `parameter` STRUCT
 | user_properties | ARRAY | Transformed to `property` STRUCT
-
-### New Metric Columns 
-The following columns are added to the `count` metric STRUCT to enable simple subsequent computations:
-
-| COLUMN NAME | DATA TYPE | DESCRIPTION
-| --- | --- | --- 
-| count.total_events | INTEGER | An integer flag to enable `total_events` to be used as an output metric
-| count.total_conversions | INTEGER | An integer flag to enable `total_conversions` to be used as an output metric, as defined in the deployment configuration.

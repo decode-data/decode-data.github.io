@@ -1,6 +1,6 @@
 # Overview
 ## What do we do?
-We build Google BigQuery data automation capabilities, using native BigQuery functionality and adjacent Google Cloud products. In order to transform inbound data to support subsequent analytics, automation and AI use-cases, we build and deploy source-specific Decoders for our clients, and license them to 3rd parties.
+We build Google BigQuery data automation capabilities, using native BigQuery functionality and adjacent Google Cloud products. In order to transform inbound data to support subsequent analytics, automation and AI use-cases, we build and deploy source-specific data decoders for our clients, and license them to 3rd parties.
 
 ## What is a decoder?
 A decoder restructures and augments inbound data to optimise the structure and contents for query and analysis. It is essentially an upgrade to a standard inbound data source, removing complexity from downstream operations in order to speed up (and level-up) subsequent data activities.

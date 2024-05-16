@@ -24,6 +24,7 @@ theme:
   logo: assets/logos/Decode Data Logo 180x180.png
   favicon: assets/logos/Decode Data Logo Transparent 130x130.png
   features:
+    - navigation.footer
     - navigation.indexes 
     - content.code.copy    
 

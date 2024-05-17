@@ -8,20 +8,24 @@ It can be installed by permitted users on registered datasets by executing a sin
 The Google Analytics 4 decoder is currently open to private alpha registration. Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
 
 ## Installation
-The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the example below, for the `us` multi-region).
+The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (`ga4_dataset_id`), or a different dataset if desired.  Note that the installation function needs to be called in the same region in which the GA4 dataset is located (in the examples below, for the `us` multi-region).
+
+### Basic Installation
+In the following installation examples, the `event_options` `JSON` variable is `NULL`, which means that default installation options are used. This object is the mechanism via which custom installation configurations are set.
 
 === "Installation in GA4 dataset"
 
     ```SQL
     --DECLARATION
         DECLARE ga4_dataset_id, decoder_dataset_id STRING;
+        DECLARE event_options JSON DEFAULT JSON '{}';
 
     --CONFIGURATION
         SET ga4_dataset_id = 'project_id.analytics_##########';
         SET decoder_dataset_id = ga4_dataset_id;
 
     --EXECUTION  
-        CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id);
+        CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id, event_options);
     ```
 
 === "Installation in different dataset"
@@ -29,23 +33,24 @@ The GA4 decoder can be deployed in the same dataset as the inbound GA4 dataset (
     ```SQL
     --DECLARATION
         DECLARE ga4_dataset_id, decoder_dataset_id STRING;
+        DECLARE event_options JSON DEFAULT JSON '{}';
 
     --CONFIGURATION
         SET ga4_dataset_id = 'project_id.analytics_##########';
         SET decoder_dataset_id = 'another_project_id.analytics_##########';
 
     --EXECUTION  
-        CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id);
+        CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id, event_options);
     ```
 
 === "Concise syntax"
 
     ```SQL
-    CALL decodedata.us.install_ga4_decoder('project_id.analytics_##########', 'another_project_id.analytics_##########');
+    CALL decodedata.us.install_ga4_decoder('project_id.analytics_##########', 'another_project_id.analytics_##########', NULL);
     ```
 
 ## Output Resources
-Following default installation, these output resources are built in the `decoder_dataset_id` dataset:
+Following default installation, these output tables  are built in the `decoder_dataset_id` dataset:
 
 Resource Name | Resource Type | Partitioning Column | Row Granularity
 --- | --- | --- | ---
@@ -55,7 +60,7 @@ Resource Name | Resource Type | Partitioning Column | Row Granularity
 These will be built from the latest data upon installation, but you will need to execute the `decoder_dataset_id.RUN_DECODER(start_date, end_date)` function to refresh output table with the transformed latest arriving data.
 
 ## Automation
-In order to efficiently automate the decoder, a simple BigQuery scheduled query can be used to call the `RUN_DECODER` function periodically (typically every hour).  Since it is querying metadata to identify newly arriving date partitions, the underlying data is never queried, meaning that the compute required for the automation is predicatable and low (see the Compute Estimate section).
+In order to efficiently automate the decoder, a simple BigQuery scheduled query can be used to call the `RUN_DECODER` function periodically (typically every hour).  Since it is querying metadata to identify newly arriving date partitions, the underlying data is never queried, meaning that the compute required for the automation is predictable and low (see the Compute Estimate section).
 
 Since Google indicates that inbound data can change up to 72 hours after arrival, we typically refresh the past 4 days of data on each identified arrival of new data.
 

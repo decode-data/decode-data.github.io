@@ -18,7 +18,7 @@ It is installed between standard Google-managed inbound BigQuery data transfers 
 
 It efficiently and reponsively builds downstream data assets and is optionally configurable upon deployment, with pre-configured installation functions for connection to Looker, Looker Studio, Tableau, Power BI, other business intelligence tools or even cross-cloud storage buckets.
 
-By using a metadata-driven approach, it is responsive to newly arriving data in a cost-optimal manner and requires minimal ongoing maintenance or monitoring (athough metadata-based monitoring functions are provided).
+By using a metadata-driven approach, it is responsive to newly arriving data in a cost-optimal manner and requires minimal ongoing maintenance or monitoring (although metadata-based monitoring functions are provided).
 
 ## Why would you need one?
 Inbound data structures are typically designed for optimal storage and schema stability, not for simplicity of modelling, query or analytics. Specifically, nested data structures pose challenges as the structure of the nested data needs to be known ahead of time in order to extract meaningful data. This also applies to JSON data.

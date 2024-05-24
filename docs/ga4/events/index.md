@@ -44,7 +44,7 @@ One row represents one single discrete event.
         └── is_active_user BOOLEAN	
     ```
 
-=== "Decoded `events` schema"
+=== "Output `events` schema"
     ```text
     events
         ├── project_id STRING	
@@ -131,8 +131,25 @@ The following columns are included in the `events` output table, with appropriat
 | event_previous_timestamp | INTEGER | TIMESTAMP | UTC timestamp of previous event occurrence
 | user_first_touch_timestamp | INTEGER | TIMESTAMP | UTC timestamp of user first touch
 
-### New Columns (Augmentation)
+### New Columns (Augmented)
 The following augmentation columns are added to the output `events` table:
+
+```txt
+local STRUCT	
+    ├── timezone_id STRING	
+    ├── timezone_name STRING	
+    ├── country_code STRING	
+    ├── timezone_source STRING	
+    ├── latitude STRING	
+    ├── longitude STRING	
+    ├── date DATE	
+    ├── timestamp DATETIME	
+    ├── time TIME	
+    ├── hour INTEGER	
+    ├── hour_decimal FLOAT	
+    ├── previous_timestamp DATETIME	
+    └── first_touch_timestamp DATETIME	
+```
 
 | COLUMN NAME | DATA TYPE | DESCRIPTION |
 | --- | --- | --- |
@@ -151,7 +168,7 @@ The following augmentation columns are added to the output `events` table:
 | local.previous_timestamp | DATETIME | NEW geo-adjusted `previous_timestamp` |
 | local.first_touch_timestamp | DATETIME | NEW geo-adjusted `first_touch_timestamp` |
 
-### New Columns (Restructuring)
+### New Columns (Restructured)
 The following flat `STRUCT` columns are added, replacing the nested source columns which are excluded from the output `events` table. The `event_name` column is still included in the output `events` table, but is supplemented with the `count` metrics `STRUCT`.
 
 | SOURCE COLUMN NAME | SOURCE DATA TYPE | TRANSFORMATION
@@ -159,3 +176,76 @@ The following flat `STRUCT` columns are added, replacing the nested source colum
 | event_name | STRING | Transformed to `count` metric STRUCT
 | event_params | ARRAY | Transformed to `parameter` STRUCT
 | user_properties | ARRAY | Transformed to `property` STRUCT
+
+#### Count Schema
+The following metric sub-columns are included as standard in the `count` `STRUCT`, in addition to any other `event_name` values detected in the data.
+
+```text
+count STRUCT	
+    ├── events INTEGER	
+    ├── conversions INTEGER	
+    ├── click INTEGER	
+    ├── file_download INTEGER	
+    ├── first_visit INTEGER	
+    ├── form_start INTEGER	
+    ├── form_submit INTEGER	
+    ├── page_view INTEGER	
+    ├── purchase INTEGER	
+    ├── scroll INTEGER	
+    ├── search INTEGER	
+    ├── session_start INTEGER	
+    ├── user_engagement INTEGER	
+    ├── video_complete INTEGER	
+    ├── video_progress INTEGER	
+    ├── video_start INTEGER	
+    └── view_search_results INTEGER	
+
+```
+
+#### Parameter Schema
+The following value sub-columns are included as standard in the `parameter` `STRUCT`, in addition to any other `event_parameter` values detected in the data.
+```text
+    parameter STRUCT	
+        ├── anonymize_ip STRING	
+        ├── batch_ordering_id INTEGER	
+        ├── batch_page_id INTEGER	
+        ├── campaign STRING	
+        ├── debug_mode INTEGER	
+        ├── engaged_session_event INTEGER	
+        ├── engagement_time_msec INTEGER	
+        ├── entrances INTEGER	
+        ├── file_extension STRING	
+        ├── file_name STRING	
+        ├── form_destination STRING	
+        ├── form_id STRING	
+        ├── form_name STRING	
+        ├── ga_session_id INTEGER	
+        ├── ga_session_number INTEGER	
+        ├── ignore_referrer STRING	
+        ├── link_classes STRING	
+        ├── link_domain STRING	
+        ├── link_id STRING	
+        ├── link_text STRING	
+        ├── link_url STRING	
+        ├── medium STRING	
+        ├── outbound STRING	
+        ├── page_location STRING	
+        ├── page_path STRING	
+        ├── page_referrer STRING	
+        ├── page_title STRING	
+        ├── percent_scrolled INTEGER	
+        ├── search_term STRING	
+        ├── session_engaged STRING	
+        ├── source STRING	
+        ├── term STRING	
+        ├── video_current_time INTEGER	
+        ├── video_duration INTEGER	
+        ├── video_percent STRING	
+        ├── video_provider STRING	
+        ├── video_title STRING	
+        ├── video_url STRING	
+        └── visible STRING	
+```
+
+#### Property Schema
+There are no standard values for `user_properties`, so sub-columns will only be included in the property `STRUCT` if they are detected in the data.

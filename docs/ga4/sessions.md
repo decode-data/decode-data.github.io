@@ -1,10 +1,43 @@
 # Events
 ## Overview
-The `sessions` table is a flattened date-partitioned session-level aggregation of the `events` table. The attibution model defaults to `last_click`, but can also be configured as `first_click`, `first_click_non_direct` or `last_click_non_direct`.
+The `sessions` table is a flattened date-partitioned session-level aggregation of the `events` table. The attibution model defaults to `last_click_non_direct`, but can also be configured as `last_click`, `first_click` or  `first_click_non_direct`.
 
 One row represents one single discrete session.
 
 ## Schema
+=== "Output `sessions` schema"
+    ```text
+        events
+            ├── session_id STRING	
+            ├── project_id STRING	
+            ├── dataset_name STRING	
+            ├── analytics_property_id STRING	
+            ├── stream_id STRING	
+            ├── platform STRING	
+            ├── user_pseudo_id STRING	
+            ├── is_active_user BOOLEAN	
+            ├── is_engaged_session BOOLEAN	
+            ├── event_date DATE	
+            ├── session_start_timestamp TIMESTAMP	
+            ├── session_end_timestamp TIMESTAMP	
+            ├── event_names ARRAY<STRING>	
+            ├── privacy_info STRUCT	
+            ├── user_first_touch_timestamp TIMESTAMP	
+            ├── user_ltv STRUCT	
+            ├── device STRUCT	
+            ├── geo STRUCT	
+            ├── app_info STRUCT	
+            ├── attribution_model STRING	
+            ├── traffic_source STRUCT	
+            ├── event_dimensions STRUCT	
+            ├── collected_traffic_source STRUCT	
+            ├── channel_grouping STRING	
+            ├── local STRUCT	
+            ├── event_value_in_usd FLOAT	
+            ├── count STRUCT	
+            └── parameter STRUCT	
+    ```
+
 ### Aggregation Columns
 The following columns are used as aggregation dimensions, meaning that one row will correspond to a unique combination of these column values.
 
@@ -39,6 +72,7 @@ All columns in the `count` metric `STRUCT` in the `events` table are summed acro
 | --- | --- | --- | ---
 | event_value_in_usd | FLOAT | `SUM(event_value_in_usd)` | Sum of `event_value_in_usd` across all events in a session
 | count.total_sessions | INTEGER | `1 AS total_sessions` | An integer flag to enable `total_sessions` to be used as an output metric
+| count.total_engaged_sessions | INTEGER | ```MAX(SAFE_CAST(parameter.session_engaged AS INT64))``` | An integer flag to indicate whether the session was classified as engaged
 | count.total_events | INTEGER | `SUM(count.total_events)` | The count of events in a session
 | count.total_conversion_events | INTEGER | `SUM(count.total_conversions)` | Total conversion events in a session
 | count.total_conversion_sessions | INTEGER | `MAX(count.total_conversions)` | Flag (`1`) if a session contains at least one conversion event

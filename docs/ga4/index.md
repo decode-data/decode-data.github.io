@@ -1,8 +1,10 @@
 # Google Analytics 4
 ## Objective
-The Google Analytics 4 (GA4) decoder enables automatic pre-modelling of the GA4 BigQuery `events_YYYYMMDD` export, providing flattened, date-partitioned `events` and `sessions` tables containing all standard and observed `event_params` and `user_properties`.  It also provides mechanisms to detect new `event_params` and `user_properties` values and to incrementally update data based on inbound data detection.
+The Google Analytics 4 (GA4) decoder simplifies and augments the GA4 BigQuery export, making subsequent data operations simpler and quicker.
 
-It can be installed by permitted users on registered datasets by executing a single BigQuery function, without dependencies on any external platforms or API calls.
+It enables automatic pre-modelling of the GA4 BigQuery `events_YYYYMMDD` export, providing flattened, date-partitioned `events` and `sessions` tables containing all standard and observed `event_params` and `user_properties`.  It also provides mechanisms to detect new `event_params` and `user_properties` values and to incrementally update the schema based on inbound data detection.
+
+It can be installed using a one-line command in the BigQuery console by permitted users on registered datasets, and has no dependencies on any external platforms or API calls.
 
 ## Access
 The Google Analytics 4 decoder is currently open to private alpha registration. Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.
@@ -16,30 +18,24 @@ In the following installation examples, the `event_options` `JSON` variable is `
 === "Basic installation in the GA4 dataset"
 
     ```SQL
-    --DECLARATION
       DECLARE ga4_dataset_id, decoder_dataset_id STRING;
       DECLARE event_options JSON DEFAULT JSON '{}';
 
-    --CONFIGURATION
       SET ga4_dataset_id = 'project_id.analytics_##########';
       SET decoder_dataset_id = ga4_dataset_id;
 
-    --EXECUTION  
       CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id, event_options);
     ```
 
 === "Basic installation in a different dataset"
 
     ```SQL
-    --DECLARATION
       DECLARE ga4_dataset_id, decoder_dataset_id STRING;
       DECLARE event_options JSON DEFAULT JSON '{}';
 
-    --CONFIGURATION
       SET ga4_dataset_id = 'project_id.analytics_##########';
       SET decoder_dataset_id = 'project_id.decoder_dataset_name';
 
-    --EXECUTION  
       CALL decodedata.us.install_ga4_decoder(ga4_dataset_id, decoder_dataset_id, event_options);
     ```
 
@@ -58,7 +54,7 @@ Resource Name | Resource Type | Partitioning Column | Row Granularity
 **`events`** | `TABLE` | `event_date` | One row per event
 **`sessions`** | `TABLE` | `event_date` | One row per session
 
-Detailed information regarding the transformation, augmentation and schema is available in the [events](/ga4/events/index.md) and [sessions](/ga4/sessions.md) docs.
+Detailed information regarding the transformation, augmentation and schema is available in the [events](/events/index.md) and [sessions](/sessions.md) docs.
 
 These date-partitioned tables will be built from the latest data upon installation.
 

@@ -13,6 +13,72 @@ The `events` table is a flattened transformation of the raw inbound `events_YYYY
 One row represents one single discrete event.
 
 ## Schema
+=== "Original `events_YYYYMMDD` schema"
+
+    ```text
+    events_YYYYMMDD
+        ├── event_date STRING	
+        ├── event_timestamp INTEGER	
+        ├── event_name STRING	
+        ├── event_params ARRAY<STRUCT>	
+        ├── event_previous_timestamp INTEGER	
+        ├── event_value_in_usd FLOAT	
+        ├── event_bundle_sequence_id INTEGER	
+        ├── event_server_timestamp_offset INTEGER	
+        ├── user_id STRING	
+        ├── user_pseudo_id STRING	
+        ├── privacy_info STRUCT	
+        ├── user_properties ARRAY<STRUCT>	
+        ├── user_first_touch_timestamp INTEGER	
+        ├── user_ltv STRUCT	
+        ├── device STRUCT	
+        ├── geo STRUCT	
+        ├── app_info STRUCT	
+        ├── traffic_source STRUCT	
+        ├── stream_id STRING	
+        ├── platform STRING	
+        ├── event_dimensions STRUCT	
+        ├── ecommerce STRUCT	
+        ├── items ARRAY<STRUCT>	
+        ├── collected_traffic_source STRUCT	
+        └── is_active_user BOOLEAN	
+    ```
+
+=== "Decoded `events` schema"
+    ```text
+    events
+        ├── project_id STRING	
+        ├── dataset_name STRING	
+        ├── analytics_property_id STRING	
+        ├── event_id STRING	
+        ├── session_id STRING	
+        ├── event_date DATE	
+        ├── event_timestamp TIMESTAMP	
+        ├── event_name STRING	
+        ├── event_previous_timestamp TIMESTAMP	
+        ├── event_value_in_usd FLOAT	
+        ├── event_bundle_sequence_id INTEGER	
+        ├── event_server_timestamp_offset TIMESTAMP	
+        ├── user_id STRING	
+        ├── user_pseudo_id STRING	
+        ├── privacy_info STRUCT	
+        ├── user_first_touch_timestamp TIMESTAMP	
+        ├── user_ltv STRUCT	
+        ├── device STRUCT	
+        ├── geo STRUCT	
+        ├── app_info STRUCT	
+        ├── traffic_source STRUCT	
+        ├── stream_id STRING	
+        ├── platform STRING	
+        ├── event_dimensions STRUCT	
+        ├── collected_traffic_source STRUCT	
+        ├── is_active_user BOOLEAN
+        ├── local STRUCT	
+        ├── count STRUCT
+        ├── parameter STRUCT
+        └── property STRUCT	    
+    ```
+
 ### New Columns (Metadata)
 The following metadata columns are added to the output `events` table.
 
@@ -46,14 +112,14 @@ The following columns are passed through directly from the raw `events_YYYYMMDD`
 | event_dimensions | STRUCT |
 | collected_traffic_source | STRUCT |
 | is_active_user | BOOLEAN |
-| privacy_info | STRING |
-| user_ltv | FLOAT |
-| device | STRING |
-| geo | STRING |
-| app_info | STRING |
-| traffic_source | STRING |
-| event_dimensions | STRING |
-| collected_traffic_source | STRING |
+| privacy_info | STRUCT |
+| user_ltv | STRUCT |
+| device | STRUCT |
+| geo | STRUCT |
+| app_info | STRUCT |
+| traffic_source | STRUCT |
+| event_dimensions | STRUCT |
+| collected_traffic_source | STRUCT |
 
 ### Data Type Changes
 The following columns are included in the `events` output table, with appropriate data type changes.

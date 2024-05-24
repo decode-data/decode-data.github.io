@@ -65,6 +65,7 @@ nav:
       - Advanced: ga4/advanced.md
   - BigQuery Reference:
     - Functions: bigquery/functions.md
+    - Conventions: bigquery/conventions.md
 
 copyright: >-
   Copyright &copy; 2024 DECODE DATA LTD (15503524), UK

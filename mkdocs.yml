@@ -29,6 +29,8 @@ theme:
     - content.code.copy    
 
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -54,11 +56,13 @@ nav:
   - Decoders:
     - Google Analytics 4:
       - GA4 Overview: ga4/index.md
+      - Quickstart: ga4/quickstart.md
       - Events: 
         - Events Overview: ga4/events/index.md
         - Names: ga4/events/event_names.md
         - Parameters: ga4/events/event_parameters.md
       - Sessions: ga4/sessions.md
+      - Advanced: ga4/advanced.md
   - BigQuery Reference:
     - Functions: bigquery/functions.md
 

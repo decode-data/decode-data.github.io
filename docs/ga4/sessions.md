@@ -76,7 +76,33 @@ All columns in the `count` metric `STRUCT` in the `events` table are summed acro
 | count.total_events | INTEGER | `SUM(count.total_events)` | The count of events in a session
 | count.total_conversion_events | INTEGER | `SUM(count.total_conversions)` | Total conversion events in a session
 | count.total_conversion_sessions | INTEGER | `MAX(count.total_conversions)` | Flag (`1`) if a session contains at least one conversion event
-| parameter.total_engagement_time_msec | FLOAT | `SUM(parameter.engagement_time_msec)` | The sum of engagement time across all session events
+
+The standard schema for the `count` `STRUCT` in the sessions table is therefore:
+
+```text
+    count STRUCT	
+        ├── sessions INTEGER	
+        ├── engaged_sessions INTEGER	
+        ├── events INTEGER	
+        ├── conversion_events INTEGER	
+        ├── conversion_sessions INTEGER	
+        ├── click INTEGER	
+        ├── file_download INTEGER	
+        ├── first_visit INTEGER	
+        ├── form_start INTEGER	
+        ├── form_submit INTEGER	
+        ├── page_view INTEGER	
+        ├── purchase INTEGER	
+        ├── scroll INTEGER	
+        ├── search INTEGER	
+        ├── session_start INTEGER	
+        ├── user_engagement INTEGER	
+        ├── video_complete INTEGER	
+        ├── video_progress INTEGER	
+        ├── video_start INTEGER	
+        └── view_search_results INTEGER	
+```
+
 
 ### Attributed Columns
 The following column values are selected based on the attribution model configured upon deployment(`first_click`, `last_click`, `first_click_non_direct` and `last_click_non_direct`), with direct-attributed events defined by the `channel_grouping`.  The attribution model for the deployment is then recorded in the `attribution_model` `STRING` column.
@@ -95,7 +121,53 @@ The following column values are selected based on the attribution model configur
 | channel_grouping | STRING
 | local | STRUCT
 
-### Aggregated Array Columns
-Additionally, for `parameter` and `property` values observed at the `event` level, `ARRAY` fields of unique, non-null values are included for downstream anaytical purposes.  The naming convention is unchanged from the `event` table. 
+### Parameter/Property Columns
+Additionally, for `parameter` and `property` values observed at the `event` level, the `MAX` of the column value is taken, ensuring that if any value is `NOT NULL`, the `MAX` value will be propagated to the `sessions.parameter` or `sessions.property` `STRUCT`.  The naming convention is unchanged from the `event` table. 
 
 If specific `parameter` or `property` sub-columns require different aggregation treatment (e.g. `SUM`), this is configurable upon deployment. By default the only parameter sub-column which is summed is `parameter.total_engagement_time_msec`, which is defined as `SUM(parameter.engagement_time_msec)` across all session events.
+
+The standard schema for the `parameter` `STRUCT` in the sessions table is therefore:
+
+```text
+parameter STRUCT	
+    ├── total_engagement_time_msec INTEGER	
+    ├── anonymize_ip STRING	
+    ├── batch_ordering_id INTEGER	
+    ├── batch_page_id INTEGER	
+    ├── campaign STRING	
+    ├── debug_mode INTEGER	
+    ├── engaged_session_event INTEGER	
+    ├── engagement_time_msec INTEGER	
+    ├── entrances INTEGER	
+    ├── file_extension STRING	
+    ├── file_name STRING	
+    ├── form_destination STRING	
+    ├── form_id STRING	
+    ├── form_name STRING	
+    ├── ga_session_id INTEGER	
+    ├── ga_session_number INTEGER	
+    ├── ignore_referrer STRING	
+    ├── link_classes STRING	
+    ├── link_domain STRING	
+    ├── link_id STRING	
+    ├── link_text STRING	
+    ├── link_url STRING	
+    ├── medium STRING	
+    ├── outbound STRING	
+    ├── page_location STRING	
+    ├── page_path STRING	
+    ├── page_referrer STRING	
+    ├── page_title STRING	
+    ├── percent_scrolled INTEGER	
+    ├── search_term STRING	
+    ├── session_engaged STRING	
+    ├── source STRING	
+    ├── term STRING	
+    ├── video_current_time INTEGER	
+    ├── video_duration INTEGER	
+    ├── video_percent STRING	
+    ├── video_provider STRING	
+    ├── video_title STRING	
+    ├── video_url STRING	
+    └── visible STRING	
+```

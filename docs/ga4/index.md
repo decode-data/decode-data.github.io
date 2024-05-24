@@ -54,7 +54,7 @@ Resource Name | Resource Type | Partitioning Column | Row Granularity
 **`events`** | `TABLE` | `event_date` | One row per event
 **`sessions`** | `TABLE` | `event_date` | One row per session
 
-Detailed information regarding the transformation, augmentation and schema is available in the [events](/events/index.md) and [sessions](/sessions.md) docs.
+Detailed information regarding the transformation, augmentation and schema is available in the [events](events/index.md) and [sessions](sessions.md) docs.
 
 These date-partitioned tables will be built from the latest data upon installation.
 

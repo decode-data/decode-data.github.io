@@ -65,4 +65,4 @@ Decoders can deployed programmatically across hundreds of data sources in just a
 ## What Decoders are available?
 The [Google Analytics 4 Decoder](ga4/index.md) is currently open to private alpha registration.  Apply for access <a href="/ga4/access">here</a>.  
 
-Additional decoders are also in development and are currently being used on internal and client projects.
+Additional decoders are also in development and are currently being used on a variety of internal and client projects.

@@ -63,6 +63,6 @@ A decoder is installed in a configurable dataset (within the same region as the 
 Decoders can deployed programmatically across hundreds of data sources in just a few lines of code. No configuration is _required_, but decoders _can_ be configured in granular ways depending on the use-case and data.
 
 ## What Decoders are available?
-The [Google Analytics 4 Decoder](ga4/index.md) is currently open to private alpha registration.  Apply for access <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1LVjV2PAVxOqnQMZrg43XMRwblpHPaooGGX2eCJ1Or52qwg/viewform?usp=sf_link" target="_blank">here</a>.  
+The [Google Analytics 4 Decoder](ga4/index.md) is currently open to private alpha registration.  Apply for access <a href="/ga4/access">here</a>.  
 
 Additional decoders are also in development and are currently being used on internal and client projects.

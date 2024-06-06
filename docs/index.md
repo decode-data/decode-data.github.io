@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Overview
 ## What do we do?
 We build Google BigQuery data automation capabilities, using native BigQuery functionality and adjacent Google Cloud products. In order to transform inbound data to support subsequent analytics, automation and AI use-cases, we build and deploy source-specific data decoders for our clients, and license them to 3rd parties.

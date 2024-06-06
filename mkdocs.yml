@@ -26,6 +26,7 @@ theme:
   features:
     - navigation.footer
     - navigation.indexes 
+    - navigation.tabs 
     - content.code.copy    
 
 markdown_extensions:
@@ -64,11 +65,14 @@ nav:
         - Parameters: ga4/events/event_parameters.md
       - Sessions: ga4/sessions.md
       - Advanced: ga4/advanced.md
-  - BigQuery Reference:
-    - Functions: bigquery/functions.md
+  - Reference:
+    # - Functions: bigquery/functions.md
     - Conventions: bigquery/conventions.md
+  - Legal:
+    - Terms & Conditions: terms.md
+    - Privacy Policy: privacy.md
 
 copyright: >-
   Copyright &copy; 2024 DECODE DATA LTD (15503524), UK
-  <br><a href="#__consent">Change cookie settings</a>
+  <br><a href="#__consent">Change cookie settings</a> | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms & Conditions</a>
   

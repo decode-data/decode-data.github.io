@@ -23,6 +23,8 @@ It is installed between standard Google-managed inbound BigQuery data sources an
 
 It efficiently and reponsively builds downstream data assets and is optionally configurable upon deployment, with pre-configured installation functions for connection to Looker, Looker Studio, Tableau, Power BI, other business intelligence tools or even cross-cloud storage buckets.
 
+Downstream tables can also be connected directly to data transformation-specific tools like [Dataform](https://cloud.google.com/dataform/docs/) or [DBT](https://docs.getdbt.com/), to simplify subsequent data modelling activities.
+
 By using a metadata-driven approach, it is responsive to newly arriving data in a cost-optimal manner and requires minimal ongoing maintenance or monitoring (although metadata-based monitoring functions are provided).
 
 ## Why would you need one?

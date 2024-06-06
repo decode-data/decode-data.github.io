@@ -7,7 +7,7 @@ It enables automatic pre-modelling of the GA4 BigQuery `events_YYYYMMDD` export,
 It can be installed using a one-line command in the BigQuery console by permitted users on registered datasets, and has no dependencies on any external platforms or API calls.
 
 ## Access
-The Google Analytics 4 decoder is currently open to private alpha registration. Apply for access <a href="/ga4/access">here</a>.
+Signup to one of our plans [here](signup.md), for a single GA4 property, enterprise or agency plans. All plans feature a free trial period for evaluation.
 
 ## Quickstart
 Follow [these](quickstart.md) instructions to get started as quickly as possible.

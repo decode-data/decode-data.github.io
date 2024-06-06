@@ -58,7 +58,7 @@ nav:
     - Google Analytics 4:
       - GA4 Overview: ga4/index.md
       - Quickstart: ga4/quickstart.md
-      - Access: ga4/access.md
+      - Plans: ga4/signup.md
       - Events: 
         - Events Overview: ga4/events/index.md
         - Names: ga4/events/event_names.md

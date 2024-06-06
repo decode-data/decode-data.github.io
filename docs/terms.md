@@ -10,7 +10,7 @@ Please read this agreement carefully and save it. If you do not agree with it, y
 
 These are the agreed terms:
 
-## 1.	Definitions
+## 1.   Definitions
 
 "Content"	means the textual, visual or aural content that is encountered as part of your experience on Our Website. It may include, among other things: text, images, sounds, videos and animations. 
 

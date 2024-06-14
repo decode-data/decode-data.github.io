@@ -1,5 +1,5 @@
 ## Access
-Signup to one of our plans [here](signup.md), for a single GA4 property, enterprise or agency plans. All plans feature a free trial period for evaluation.
+The [Google Analytics 4 Decoder](ga4/index.md) is in pre-launch with selected agencies and enterprises. Apply for access [here](https://forms.gle/qfFSthXr6d4gnD9dA).
 
 ## Installation
 To install and run the decoder in the GA4 dataset, with default options, execute the following code in your BigQuery console, replacing `project_id.analytics_##########` with your GA4 `dataset_id` and click the `Run` button.

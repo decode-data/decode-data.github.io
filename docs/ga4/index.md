@@ -1,4 +1,7 @@
 # Google Analytics 4
+## Motivation
+The Google Analytics 4 export to BigQuery has a complex structure which is extremely difficult to query in SQL, making analytics tasks time-consuming and SQL code extremely long, difficult to understand and error-prone.
+
 ## Objective
 The Google Analytics 4 (GA4) decoder simplifies and augments the GA4 BigQuery export, making subsequent data operations simpler and quicker.
 
@@ -7,7 +10,7 @@ It enables automatic pre-modelling of the GA4 BigQuery `events_YYYYMMDD` export,
 It can be installed using a one-line command in the BigQuery console by permitted users on registered datasets, and has no dependencies on any external platforms or API calls.
 
 ## Access
-Signup to one of our plans [here](signup.md), for a single GA4 property, enterprise or agency plans. All plans feature a free trial period for evaluation.
+The [Google Analytics 4 Decoder](ga4/index.md) is in pre-launch with selected agencies and enterprises. Apply for access [here](https://forms.gle/qfFSthXr6d4gnD9dA).
 
 ## Quickstart
 Follow [these](quickstart.md) instructions to get started as quickly as possible.
